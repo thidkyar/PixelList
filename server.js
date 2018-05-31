@@ -76,10 +76,17 @@ app.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
+<<<<<<< HEAD
 //POST item
 //EDIT item
 //DELETE item
 
+=======
+// Welcome page
+app.get("/welcome", (req, res) => {
+  res.render("welcome");
+});
+>>>>>>> sara
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
