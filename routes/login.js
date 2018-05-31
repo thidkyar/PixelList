@@ -15,7 +15,7 @@ module.exports = (knex) => {
       } else {
         res.render("login");
       }
-  })
+    })
   });
   return router;
 }
