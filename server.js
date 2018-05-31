@@ -8,7 +8,8 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
-var cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser')
+const cookieSession = require("cookie-session");
 
 
 const knexConfig  = require("./knexfile");
@@ -40,7 +41,12 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 //Cookie parser
-app.use(cookieParser());
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["Dont worry how this is encrypted"]
+  })
+);
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
@@ -49,7 +55,10 @@ app.use("/api/register", registerRoutes(knex))
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  let templateVars = {
+    userName: req.session.id,
+  };
+  res.render("index", templateVars);
 });
 
 //login page
@@ -57,25 +66,20 @@ app.get("/login", (req, res) => {
   res.render("login");
 })
 
-
-//login post
-
 //register page
 app.get("/register", (req, res) => {
   res.render("register")
 })
 
-//register post
-app.post("/register", (req, res) => {
-  let userName = req.body.username;
-  let pwd = req.body.password;
-  knex("users")
-      .insert({username: userName, password: pwd})
-      .then((user) => {
-        console.log("check this", user);
-      });
+app.post("/logout", (req, res) => {
+  req.session = null;
   res.redirect("/");
 });
+
+//POST item
+//EDIT item
+//DELETE item
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
