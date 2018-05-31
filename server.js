@@ -8,6 +8,8 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
+var cookieParser = require('cookie-parser')
+
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -37,6 +39,9 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+//Cookie parser
+app.use(cookieParser());
+
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/login", loginRoutes(knex));
@@ -52,17 +57,8 @@ app.get("/login", (req, res) => {
   res.render("login");
 })
 
-//login post
-app.post("/login", (req, res) => {
-  let user = req.session.id;
-    if (user) {
-      res.redirect("/");
-    } else {
-      res.render("_login");
-    }
-  res.redirect("/")
-})
 
+//login post
 
 //register page
 app.get("/register", (req, res) => {
@@ -74,11 +70,10 @@ app.post("/register", (req, res) => {
   let userName = req.body.username;
   let pwd = req.body.password;
   knex("users")
-      .insert("username", userName)
-      .then((results) => {
-        res.json(results);
-        console.log("users");
-    })
+      .insert({username: userName, password: pwd})
+      .then((user) => {
+        console.log("check this", user);
+      });
   res.redirect("/");
 });
 
