@@ -22,19 +22,27 @@
     <header>
 <% include ./partials/_header %>
 </header>
+
     <div id="userlist" class="header">
-      <input type="text" id="newItem" name="newItem" />
-      <input type="button" id="add" name="addItem" value="Add Item" />
+      <form method="POST" action="/api/users/items" >
+      <label for="newItem">New Item</label>
+      <input type="text" id="newItem" name="newItem" >
+      <label for="dueDate">Due Date</label>
+      <input type="date" min='2018-05-31' id="dueDate" name="dueDate" >
+      <input type="submit" value="Add Item">
+      <!-- <button type="submit">Add Item</button> -->
+      <!-- <input type="button" id="addItem" name="addItem" value="Add Item" /> -->
+    </form>
     </div>
-  <div class"card-body" id="categoryFilm">
+  <div id="categoryFilm">
     <h3>Films to Watch</h3>
-    <ul id="categoryFilm"/>
-    <li></li>
+    <ul id="list"/>
+    <li id="li"></li>
       <li></li>
       <li></li>
     </ul>
     </div>
-
+<!--
     <div id="categoryOther">
       <h3>Other</h3>
       <ul id="categoryOther"/>
@@ -65,6 +73,6 @@
               <li></li>
               <li></li>
             </ul>
-            </div>
+            </div> -->
   </body>
 </html>
