@@ -16,6 +16,8 @@ const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+const loginRoutes = require("./routes/login");
+const registerRoutes = require("./routes/register")
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -37,10 +39,47 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
+app.use("/api/login", loginRoutes(knex));
+app.use("/api/register", registerRoutes(knex))
 
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+//login page
+app.get("/login", (req, res) => {
+  res.render("login");
+})
+
+//login post
+app.post("/login", (req, res) => {
+  let user = req.session.id;
+    if (user) {
+      res.redirect("/");
+    } else {
+      res.render("_login");
+    }
+  res.redirect("/")
+})
+
+
+//register page
+app.get("/register", (req, res) => {
+  res.render("register")
+})
+
+//register post
+app.post("/register", (req, res) => {
+  let userName = req.body.username;
+  let pwd = req.body.password;
+  knex("users")
+      .insert("username", userName)
+      .then((results) => {
+        res.json(results);
+        console.log("users");
+    })
+  res.redirect("/");
 });
 
 app.listen(PORT, () => {
