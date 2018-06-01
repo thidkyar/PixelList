@@ -21,6 +21,8 @@ const knexLogger  = require('knex-logger');
 const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
 const registerRoutes = require("./routes/register")
+const itemRoutes = require("./routes/item");
+// const itemgetRoute = require("./routes/item_get")
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -51,7 +53,9 @@ app.use(
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/login", loginRoutes(knex));
-app.use("/api/register", registerRoutes(knex))
+app.use("/api/register", registerRoutes(knex));
+app.use("/api/users/items", itemRoutes(knex));
+// app.use("/api/users/items", itemgetRoute(knex));
 
 // Home page
 app.get("/", (req, res) => {
@@ -63,30 +67,24 @@ app.get("/", (req, res) => {
 
 //login page
 app.get("/login", (req, res) => {
-  res.render("login");
+  res.render("_login");
 })
 
 //register page
 app.get("/register", (req, res) => {
-  res.render("register")
+  res.render("_register")
 })
 
+//logout button (delete cookies)
 app.post("/logout", (req, res) => {
   req.session = null;
   res.redirect("/");
 });
 
-<<<<<<< HEAD
-//POST item
-//EDIT item
-//DELETE item
-
-=======
 // Welcome page
 app.get("/welcome", (req, res) => {
   res.render("welcome");
 });
->>>>>>> sara
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
