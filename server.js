@@ -20,9 +20,9 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const loginRoutes = require("./routes/login");
-const registerRoutes = require("./routes/register")
+const registerRoutes = require("./routes/register");
 const itemRoutes = require("./routes/item");
-// const itemgetRoute = require("./routes/item_get")
+const profileRoutes = require("./routes/profile");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -55,7 +55,7 @@ app.use("/api/users", usersRoutes(knex));
 app.use("/api/login", loginRoutes(knex));
 app.use("/api/register", registerRoutes(knex));
 app.use("/api/users/items", itemRoutes(knex));
-// app.use("/api/users/items", itemgetRoute(knex));
+app.use("/api/profile", profileRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
@@ -75,6 +75,9 @@ app.get("/register", (req, res) => {
   res.render("_register")
 })
 
+app.get("/profile", (req, res) => {
+  res.render("_profile")
+})
 //logout button (delete cookies)
 app.post("/logout", (req, res) => {
   req.session = null;

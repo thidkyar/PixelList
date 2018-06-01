@@ -19,7 +19,6 @@ module.exports = knex => {
       .select("*")
       .where({ name: firstWordinTaskName })
       .then(keywords => {
-        console.log("logging keywords", keywords);
         if (keywords.length === 0) {
           console.log("check one");
           knex("item")
