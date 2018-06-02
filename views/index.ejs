@@ -21,86 +21,92 @@
   </header>
   <div class="container">
     <div class="col-md-auto">
-        <form align="center" method="POST" action="/api/users/items">
-          <label hidden for="newItem">New Item</label>
-          <input type="text" name="newItem" placeholder="I need to...">
-          <label for="dueDate">Due Date</label>
-          <input type="date" min='2018-05-31' id="dueDate" name="dueDate">
-          <input type="submit" value="Add Item">
-          <!-- <button type="submit">Add Item</button> -->
-          <!-- <input type="button" id="addItem" name="addItem" value="Add Item" /> -->
-        </form>
-        <br>
-</div>
-<div class="row">    
+      <form align="center" method="POST" action="/api/users/items">
+        <label hidden for="newItem">New Item</label>
+        <input type="text" name="newItem" placeholder="I need to...">
+        <label for="dueDate">Due Date</label>
+        <input type="date" min='2018-05-31' id="dueDate" name="dueDate">
+        <input type="submit" value="Add Item">
+        <!-- <button type="submit">Add Item</button> -->
+        <!-- <input type="button" id="addItem" name="addItem" value="Add Item" /> -->
+      </form>
+      <br>
+    </div>
+    <div class="row">
       <div class="col-sm">
         <div id="categories" class="container-fluid text-center">
-            <div class="col-xs-6 col-sm-3">
-          <div class="panel panel-default">
+          <div class="col-xs-6 col-sm-3">
+            <div class="panel panel-default">
               <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
                     Books
                   </a>
+                </h4>
+              </div>
+              <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body" class="category1" id="cat1"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Entertainment</a>
+                </h4>
+              </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body" class="category2" id="cat2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Places</a>
+                </h4>
+              </div>
+              <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body" class="category3" id="cat3">
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Products
+                    </a>
                   </h4>
                 </div>
-                <div id="collapse1" class="panel-collapse collapse">
-                    <div class="panel-body" class="category1" id="cat1"></div>
-          </div>
-          </div>
-          </div>
-              <div class="col-xs-6 col-sm-3">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Entertainment</a>
-                          </h4>
-                        </div>
-                        <div id="collapse2" class="panel-collapse collapse">
-                            <div class="panel-body" class="category2" id="cat2"></div>
-          </div>
-          </div>
-        </div>
-          <div class="col-xs-6 col-sm-3">
-          <div class="panel panel-default">
-              <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Places</a>
-            </h4>
-          </div>
-          <div id="collapse3" class="panel-collapse collapse">
-            <div class="panel-body"class="category3" id="cat3"></div>
-          </div>
-          </div>
-        </div>
-              <div class="col-xs-6 col-sm-3">
-                  <div class="panel panel-default">
-                      <div class="panel-heading">
-                          <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Products</a>
-                          </h4>
-                        </div>
-                        <div id="collapse4" class="panel-collapse collapse">
-            <div class="panel-body" class="category4" id="cat4"></div>
-          </div>
-          </div>
-        </div>
-          <div class="col-xs-6 col-sm-3">
-          <div class="panel panel-default">
-              <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Other</a>
-                  </h4>
-                </div>
-                <div id="collapse5" class="panel-collapse collapse">
-            <div class="panel-body" class="category5" id="cat5"></div>
-          </div>
-          </div>
-        </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                  <div class="panel-body" class="category4" id="cat4">
                   </div>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-          crossorigin="anonymous"></script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Other</a>
+                </h4>
+              </div>
+              <div id="collapse5" class="panel-collapse collapse">
+                <div class="panel-body" class="category5" id="cat5">
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+          </div>
+          </div>
+          <!-- Latest compiled and minified JavaScript -->
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 </body>
-
 </html>

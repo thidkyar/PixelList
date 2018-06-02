@@ -81,12 +81,13 @@ app.get("/profile", (req, res) => {
 //logout button (delete cookies)
 app.post("/logout", (req, res) => {
   req.session = null;
-  res.redirect("/");
+  res.redirect("/welcome");
 });
 
 // Welcome page
 app.get("/welcome", (req, res) => {
-  res.render("welcome");
+  res.render("welcome", {user: {username: "dummy"}});
+
 });
 
 app.listen(PORT, () => {
