@@ -9,27 +9,27 @@ $(() => {
         .text(x.name)
         .prependTo(categoryDivId);
 
-      var deleteButton = $("<i>")
-  .addClass("fa fa-trash-o")
-  .attr("data-toggle", "tooltip")
-  .attr("data-placement", "top")
-  .attr("title", "Delete")
-  .appendTo($itemArticle);
+  //     var deleteButton = $("<i>")
+  // .addClass("fa fa-trash-o")
+  // .attr("data-toggle", "tooltip")
+  // .attr("data-placement", "top")
+  // .attr("title", "Delete")
+  // .appendTo($itemArticle);
     }
   });
 });
 
-$(document).ready(function() {
-  $(".categories").on("click", ".fa-trash-o", function(event) {
-    $.ajax({
-      method: "POST",
-      url: "/api/users/item/delete",
-      data: {
+// $(document).ready(function() {
+//   $(".categories").on("click", ".fa-trash-o", function(event) {
+//     $.ajax({
+//       method: "POST",
+//       url: "/api/users/item/delete",
+//       data: {
         
-      }
-    });
-  });
-});
+//       }
+//     });
+//   });
+// });
 
 $(document).ready(function() {
   //when user clicks an item in product category
