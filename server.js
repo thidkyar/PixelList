@@ -59,10 +59,10 @@ app.use("/api/profile", profileRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  let templateVars = {
-    userName: req.session.id,
-  };
-  res.render("index", templateVars);
+  if (req.session.user_id) {
+    return res.render("index")
+  }
+    return res.send("Nice try, lets login first yah heard?") 
 });
 
 //login page
@@ -86,7 +86,7 @@ app.post("/logout", (req, res) => {
 
 // Welcome page
 app.get("/welcome", (req, res) => {
-  res.render("welcome");
+    res.render("welcome");
 });
 
 app.listen(PORT, () => {

@@ -24,6 +24,7 @@ module.exports = (knex) => {
             console.log('did this get logged')   
             req.session.user_id = result[0].id
             req.session.user_name = result[0].username
+            console.log(req.session.user_name);
             res.redirect("/");
           })
           }

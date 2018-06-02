@@ -14,6 +14,7 @@ module.exports = knex => {
         password: pw
       })
       .then(count => {
+        console.log(count)
         res.redirect("/");
       });
   });
