@@ -1,44 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
-  <body>
-    <header>
-<% include ./partials/_header %>
-</header>
-    <div id="userlist" class="header">
-      <form method="POST" action="/api/users/items" >
-      <label for="newItem">New Item</label>
-      <input type="text" id="newItem" name="newItem" >
-      <label for="dueDate">Due Date</label>
-      <input type="date" min='2018-05-31' id="dueDate" name="dueDate" >
-      <input type="submit" value="Add Item">
-      <!-- <button type="submit">Add Item</button> -->
-      <!-- <input type="button" id="addItem" name="addItem" value="Add Item" /> -->
-    </form>
-    </div>
-  <div id="categories"> 
-    <article id="cat1" style="color:blue;"></article>
-    <article id="cat2" style="color:yellow;"></article>    
-    <article id="cat3" style="color:green;"></article>
-    <article id="cat4" style="color:purple;"></article>
-    <article id="cat5" style="color:pink;"></article>
-  </div>
-  <!-- <div id="cat2" align="right"> </div>
-  <div id="cat3" align="left"> </div>
-  <div id="cat4" align="right"> </div>
-  <div id="cat5" align="left"> </div> -->
-  </body>
+
+<head>
+  <title>Home Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <!-- External JQuery -->
+  <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+  <!-- External ajax -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <header>
+    <% include ./partials/_header %>
+  </header>
+  <div class="container">
+    <div class="col-md-auto">
+        <form align="center" method="POST" action="/api/users/items">
+          <label hidden for="newItem">New Item</label>
+          <input type="text" name="newItem" placeholder="I need to...">
+          <label for="dueDate">Due Date</label>
+          <input type="date" min='2018-05-31' id="dueDate" name="dueDate">
+          <input type="submit" value="Add Item">
+          <!-- <button type="submit">Add Item</button> -->
+          <!-- <input type="button" id="addItem" name="addItem" value="Add Item" /> -->
+        </form>
+        <br>
+</div>
+<div class="row">    
+      <div class="col-sm">
+        <div id="categories" class="container-fluid text-center">
+            <div class="col-xs-6 col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">Books</div>
+            <div class="panel-body" class="category1" id="cat1"></div>
+          </div>
+          </div>
+              <div class="col-xs-6 col-sm-3">
+                  <div class="panel panel-default">
+            <div class="panel-heading">Entertainment</div>
+            <div class="panel-body" class="category2" id="cat2"></div>
+          </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">Places</div>
+            <div class="panel-body"class="category3" id="cat3"></div>
+          </div>
+          </div>
+              <div class="col-xs-6 col-sm-3">
+                  <div class="panel panel-default">
+            <div class="panel-heading">Products</div>
+            <div class="panel-body" class="category4" id="cat4"></div>
+          </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">Other</div>
+            <div class="panel-body" class="category5" id="cat5"></div>
+          </div>
+          </div>
+        </div>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+          crossorigin="anonymous"></script>
+</body>
+
 </html>
