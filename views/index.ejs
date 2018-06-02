@@ -7,8 +7,6 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
-  <!-- External JQuery -->
-  <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
   <!-- External ajax -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Optional theme -->
@@ -39,35 +37,67 @@
         <div id="categories" class="container-fluid text-center">
             <div class="col-xs-6 col-sm-3">
           <div class="panel panel-default">
-            <div class="panel-heading">Books</div>
-            <div class="panel-body" class="category1" id="cat1"></div>
+              <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                    Books
+                  </a>
+                  </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body" class="category1" id="cat1"></div>
+          </div>
           </div>
           </div>
               <div class="col-xs-6 col-sm-3">
                   <div class="panel panel-default">
-            <div class="panel-heading">Entertainment</div>
-            <div class="panel-body" class="category2" id="cat2"></div>
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Entertainment</a>
+                          </h4>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse">
+                            <div class="panel-body" class="category2" id="cat2"></div>
           </div>
           </div>
+        </div>
           <div class="col-xs-6 col-sm-3">
           <div class="panel panel-default">
-            <div class="panel-heading">Places</div>
+              <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Places</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
             <div class="panel-body"class="category3" id="cat3"></div>
           </div>
           </div>
+        </div>
               <div class="col-xs-6 col-sm-3">
                   <div class="panel panel-default">
-            <div class="panel-heading">Products</div>
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Products</a>
+                          </h4>
+                        </div>
+                        <div id="collapse4" class="panel-collapse collapse">
             <div class="panel-body" class="category4" id="cat4"></div>
           </div>
           </div>
+        </div>
           <div class="col-xs-6 col-sm-3">
           <div class="panel panel-default">
-            <div class="panel-heading">Other</div>
+              <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Other</a>
+                  </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse">
             <div class="panel-body" class="category5" id="cat5"></div>
           </div>
           </div>
         </div>
+                  </div>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
           crossorigin="anonymous"></script>

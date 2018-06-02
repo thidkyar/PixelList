@@ -1,35 +1,24 @@
+//GET user input and display in respective category
 $(() => {
   $.ajax({
     method: "GET",
     url: "/api/users/items"
   }).done(items => {
+    var counter = 0;
     for (x of items) {
+      // counter = counter + 1;
       var categoryDivId = "#cat" + x.category_id;
-      $("<article>")
-        .text(x.name)
-        .prependTo(categoryDivId);
+      // var checkbox = '<input type="checkbox" name="status">'
+      // var placeHolderDiv = "<div class='aligned' id='${counter}'></div>";
+      // $(placeHolderDiv).prepend(categoryDivId);
 
-  //     var deleteButton = $("<i>")
-  // .addClass("fa fa-trash-o")
-  // .attr("data-toggle", "tooltip")
-  // .attr("data-placement", "top")
-  // .attr("title", "Delete")
-  // .appendTo($itemArticle);
+      // $("<article>").text(x.name).prepend(placeHolderDiv);
+      // $('<input type="checkbox" name="status">').prepend(placeHolderDiv);
+
+      $(categoryDivId).append(`<div class='aligned'> <input type="checkbox" name="status" id="check">` + '<article>' + x.name + '</article>' + `</div>`);
     }
   });
 });
-
-// $(document).ready(function() {
-//   $(".categories").on("click", ".fa-trash-o", function(event) {
-//     $.ajax({
-//       method: "POST",
-//       url: "/api/users/item/delete",
-//       data: {
-        
-//       }
-//     });
-//   });
-// });
 
 $(document).ready(function() {
   //when user clicks an item in product category
