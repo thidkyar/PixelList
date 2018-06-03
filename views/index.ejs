@@ -2,13 +2,11 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Pixel List: The Smart To-Do List</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
   <!-- External ajax -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
     crossorigin="anonymous">
@@ -20,74 +18,153 @@
     <% include ./partials/_header %>
   </header>
   <div class="container">
+    <!--ADD TASK TASK-->
     <div class="col-md-auto">
-        <form align="center" method="POST" action="/api/users/items">
-          <label hidden for="newItem">New Item</label>
-          <input type="text" name="newItem" placeholder="I need to...">
-          <label for="dueDate">Due Date</label>
-          <input type="date" min='2018-05-31' id="dueDate" name="dueDate">
-          <input type="submit" value="Add Item">
-          <!-- <button type="submit">Add Item</button> -->
-          <!-- <input type="button" id="addItem" name="addItem" value="Add Item" /> -->
-        </form>
-        <br>
+      <form class="newTask" id="newTask" align="center" method="POST" action="/api/users/items">
+        <div class="col-md-6 mb-3">
+        <label hidden for="newItem">New Item</label>
+        <input class="form-control input-lg" placeholder="Enter a new task" id="inputdefault" type="text" required />
 </div>
-<div class="row">    
-      <div class="col-sm">
-        <div id="categories" class="container-fluid text-center">
-            <div class="col-xs-6 col-sm-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">Books</div>
-            <div class="panel-body" id="cat1"></div>
+        <!-- <input type="text" required name="newItem" placeholder="I need to..."> -->
+        <!-- <label for="dueDate">Due Date</label> -->
+        <div class="col-md-6 mb-3">
+
+        <input type="date" placeholder="Enter a due date (optional)" class="form-control input-lg" id="inputdefault" type="text" required />
+
+        <!-- <input type="date" class="col-md-6 mb-3" required min='2018-06-04' id="dueDate" height="3em" name="dueDate"> -->
+        </div>
+        <br><br>
+        <button type="button" class="btn btn-primary btn-block">Add Task</button>
+      </form>
+      <br>
+    </div>
+    <!--END OF ADD TASK-->
+    <div class "main">
+      <div class="all-categories">
+        <!--Categories-->
+        <div class="col-sm-8">
+        <div class="row">
+        <div class="col-xs-6">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                  Books
+                </a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+              <div class="panel-body" class="category1" id="cat1">
+              </div>
+            </div>
           </div>
           </div>
-              <div class="col-xs-6 col-sm-3">
-                  <div class="panel panel-default">
-            <div class="panel-heading">Entertainment</div>
-            <div class="panel-body" id="cat2"></div>
+
+          <div class="col-xs-6">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Entertainment</a>
+                </h4>
+              </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body" class="category2" id="cat2">
+                </div>
+              </div>
+            </div>
+            </div>
           </div>
-          </div>
-          <div class="col-xs-6 col-sm-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">Places</div>
-            <div class="panel-body" id="cat3"></div>
-          </div>
-          </div>
-              <div class="col-xs-6 col-sm-3">
-                  <div class="panel panel-default">
-            <div class="panel-heading">Products</div>
-            <div class="panel-body" id="cat4"></div>
-          </div>
-          </div>
-          <div class="col-xs-6 col-sm-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">Other</div>
-            <div class="panel-body" id="cat5"></div>
-          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Places</a>
+                  </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                  <div class="panel-body" class="category3" id="cat3">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="panel panel-danger">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Products</a>
+                  </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                  <div class="panel-body" id="cat4">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row"> -->
+            <div class="col-xs-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Other</a>
+                  </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse">
+                  <div class="panel-body" id="cat5">
+                    </a>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            <!-- </div> -->
           </div>
         </div>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-          crossorigin="anonymous"></script>
-          <!-- Modal -->
-<div class="modal fade" id="myModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="myModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+        <!-- </div> -->
+      </div>
+    </div>
+  <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+<div class="row">
+  <!--USER PROFILE - CARD VIEW-->
+  <!-- <div class="col-sm-6"> -->
+
+  <div class="col-sm-4">
+    <div class="container" id="avatar">
+      <h3>User Profile</h3>
+        <hr>
+      <h4>UserName</h4>
+      <div class="card" style="width:100%">
+        <img class="card-img-top" src="./images/walking.gif" alt="userAvatar" style="width:55%">
+        <div class="card-body">
+          <h5 class="card-title"> Level 1: Accomplish more tasks to level up</h5>
+          <p class="card-text" align="center">health bar goes here</p>
+          <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
         </div>
       </div>
     </div>
-  </div>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+    <!-- Modal -->
+    <div class="modal fade" id="myModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 
 </html>
