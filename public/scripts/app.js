@@ -1,8 +1,10 @@
+//GET user input and display in respective category
 $(() => {
   $.ajax({
     method: "GET",
     url: "/api/users/items"
   }).done(items => {
+    var counter = 0;
     for (x of items) {
       let id = x.name
       const categoryDivId = "#cat" + x.category_id;
@@ -16,28 +18,15 @@ $(() => {
         .attr('data-target', '#myModalCenter')
         .appendTo($itemArticle)
         
-
-  //     var deleteButton = $("<i>")
-  // .addClass("fa fa-trash-o")
-  // .attr("data-toggle", "tooltip")
-  // .attr("data-placement", "top")
-  // .attr("title", "Delete")
-  // .appendTo($itemArticle);
+      let $checkbox = '<input type="checkbox" name="status">'
+      $(categoryDivId).append(`<li>`+ x.name + `</li>`);
+      // $(categoryDivId).append(`<div class='aligned'> <input type="checkbox" name="status" id="check">` + '<article>' + x.name + '</article>' + `</div>`);
+      $("checkbox").on( "click", function(){
+      $(this).parent().remove();  
+    });
     }
   });
 });
-
-// $(document).ready(function() {
-//   $(".categories").on("click", ".fa-trash-o", function(event) {
-//     $.ajax({
-//       method: "POST",
-//       url: "/api/users/item/delete",
-//       data: {
-        
-//       }
-//     });
-//   });
-// });
 
 $(document).ready(function() {
   $('.modal').on('hidden.bs.modal', function(e)

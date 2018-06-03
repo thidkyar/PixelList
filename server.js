@@ -31,6 +31,7 @@ app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
+app.use( express.static( "public" ) );
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -67,7 +68,11 @@ app.get("/", (req, res) => {
 
 //login page
 app.get("/login", (req, res) => {
-  res.render("_login");
+  let templateVars = {
+    user: req.session.user_id
+  }
+  console.log(templateVars);
+  res.render("_login", templateVars);
 })
 
 //register page
@@ -81,7 +86,7 @@ app.get("/profile", (req, res) => {
 //logout button (delete cookies)
 app.post("/logout", (req, res) => {
   req.session = null;
-  res.redirect("/");
+  res.redirect("/welcome");
 });
 
 // Welcome page

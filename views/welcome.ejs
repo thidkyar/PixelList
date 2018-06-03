@@ -10,6 +10,10 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
     crossorigin="anonymous">
+    <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+  crossorigin="anonymous">
+    
 </head>
 
 <body>
@@ -20,29 +24,29 @@
     <div class="row">
       <div class="col-sm-8"> To do: header/jumbotron size / font declaration / and alignment</div>
       <div class="col-sm-4">
-        <form method="POST" action="/register">
+        <form class="register" method="POST" action="/api/register">
           <h2> Register</h2>
+          <hr>
+          <label for="username" hidden>
+              <b>Username</b>
+            </label>
+            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="username" required placeholder="Username" />
+  <br>
+  
           <label for="fName" hidden>
             <b>First Name</b>
           </label>
-          <input type="text" name="fName" placeholder="First Name" />
-
+          <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="fName" required placeholder="First Name" />
+<br>
           <label for="lName" hidden>
             <b>Last Name</b>
           </label>
-          <input type="text" name="lName" placeholder="Last Name" />
-
-          <label for="username" hidden>
-            <b>Username</b>
-          </label>
-          <input type="text" name="username" placeholder="Username" />
-<br>
-          <input type="password" name="password" placeholder="Password" />
+          <input type="text" name="lName" class="form-control mb-2 mr-sm-2 mb-sm-0" required placeholder="Last Name" />
           <br>
-          <input type="submit" value="Submit" />
+          <input type="password" class="form-control mb-2 mr-sm-2 mb-sm-0" name="password" required placeholder="Password" />
+          <br>
+          <button type="button" class="btn btn-dark">Submit</button>
         </form>
-        <br>
-        <button> Your to do list</button>
       </div>
     </div>
     <br>
