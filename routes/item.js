@@ -56,5 +56,17 @@ module.exports = knex => {
         res.json(results);
       });
   });
+
+  router.post("/delete", (req, res) => {
+    let newId = req.body.id;
+    console.log(newId)
+    knex("item")
+      .where({name: newId})
+      .del()
+      .then(() => {
+        res.redirect('/');
+        // res.send({ result: true });   
+      });
+  });
   return router;
 };

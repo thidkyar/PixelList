@@ -5,16 +5,42 @@ $(() => {
   }).done(items => {
     for (x of items) {
       let id = x.name
+      let itemId = x.id;
       const categoryDivId = "#cat" + x.category_id;
       const $itemArticle = $("<article>")
         .text(x.name)
+        .attr('id', itemId)
         .prependTo(categoryDivId);
       $("<button>")
         .attr('id', id)
+        .css("margin-left", "10px")
         .addClass("btn btn-primary")
+        .attr('value', 'see more')
         .attr('data-toggle', 'modal')
         .attr('data-target', '#myModalCenter')
         .appendTo($itemArticle)
+      $("<button>")
+        .attr('id', id)
+        .css('margin-left', "10px")
+        .addClass("btn btn-info")
+        .attr('data-target', '#moveToggle')
+        .attr('value', 'move')
+        .appendTo($itemArticle)
+        // let $newForm = $("<form>")
+        // .attr("method", "POST")
+        // .attr("action", "/api/users/items/delete")
+        // .appendTo($itemArticle)
+        // $("<input>")
+        // .css("display", "inline-block")
+        // .css("margin-left", "10px")
+        // .attr('type', 'submit')
+        // .attr("value", 'delete')
+        // .appendTo($newForm)
+        // $("<i>")
+        // .css("padding-left", "10px")
+        // .attr("id", itemId)
+        // .addClass("fas fa-trash-alt")
+        // .appendTo($itemArticle);
         
 
   //     var deleteButton = $("<i>")
@@ -45,7 +71,7 @@ $(document).ready(function() {
         $('.api_container').remove();
     }) ;
   //when user clicks an item in product category
-  $("#cat4").on("click", "button", function(event) {
+  $("#cat4").on("click", ".btn-primary", function(event) {
     console.log(this.id)
     let word = this.id
       .split(" ")
@@ -56,29 +82,13 @@ $(document).ready(function() {
       method: "GET",
       success: data => {
         let allItems = data.items.slice(0, 5);
-        //MODAL CONTAINER
-        // const $div1 = $("<div>")
-        //   .attr('id', 'myModalCenter')
-        //   .addClass("modal hide fade")
-        //   .attr('tabindex', '-1')
-        //   .attr('role', 'dialog')
-        //   .attr('aria-labelledby', 'myModalCenterLabel')
-        //   .attr('aria-hidden', 'true')
-        // const $div2 = $("<div>")
-        //   .addClass("modal-dialog modal-dialog-centered")
-        //   .attr("role", "document")
-        //   .appendTo($div1)
-        // const $div3 = $("<div>").addClass("modal-content").appendTo($div2)
-        // const $div4 = $("<div>").addClass("modal-header").appendTo($div3)
-        // $("<h5>").addClass("modal-title").attr('id', 'myModalLongTitle').text("Nearby").appendTo($div4)
-        // $("<button>").attr("type","button").addClass("close").attr("data-dismiss","modal").attr("aria-label","close").appendTo($div4)
         const $container = $("<div>").addClass("api_container")
         //LOOP THROUGH API JSON
         allItems.forEach(function(x) {
           $("<img>")
             .attr("src", x.thumbnailImage)
             .appendTo($container);
-          $("<h4>")
+          const $itemName = $("<h4>")
             .text(`Name: ${x.name}`)
             .appendTo($container);
           $("<p>")
@@ -87,6 +97,7 @@ $(document).ready(function() {
           $("<p>")
             .text(`Rating: ${x.customerRating}`)
             .appendTo($container);
+          $("<a>").attr("href", `${x.productUrl}`).addClass("btn").attr('role','button').text("Buy Now").appendTo($itemName)
         });
         $(".modal-body").append($container);
       }
@@ -94,7 +105,7 @@ $(document).ready(function() {
   });
 
   //when user clicks an item in places category
-  $("#cat3").on("click", "button", function(event) {
+  $("#cat3").on("click", ".btn-primary", function(event) {
     let word = this.id
       .split(" ")
       .pop();
@@ -123,7 +134,7 @@ $(document).ready(function() {
   });
 
   //when user click an item in books category
-  $("#cat1").on("click", "button", function(event){
+  $("#cat1").on("click", ".btn-primary", function(event){
     let keyword = this.id.split(' ').pop();
     console.log(this.id)
     $.ajax({
@@ -148,4 +159,39 @@ $(document).ready(function() {
       }
     });
   });
-});
+
+  //when user click an item in entertainment category
+  $("#cat2").on("click", ".btn-primary", function(event){
+    let keyword = this.id.split(' ').pop();
+    console.log(this.id)
+    $.ajax({
+      url: `https://api.themoviedb.org/3/search/movie?api_key=312c5afd5ea5d9dcde6fc7dbd0b1e334&query=${keyword}`,
+      method: "GET",
+      success: (data) => {
+        let allItems = data.results.slice(0, 5);
+        const $container = $("<div>")
+          .addClass("api_container")
+        allItems.forEach((x) => {
+          $("<img>").attr("src", `http://image.tmdb.org/t/p/w185${x.poster_path}`).appendTo($container)
+          $("<h4>").text(`Title: ${x.title}`).appendTo($container)
+          $("<p>").text(`Rating: ${x.vote_average}/10`).appendTo($container)
+          $("<p>").text(`Release Date: ${x.release_date}`).appendTo($container)         
+        });
+        $(".modal-body").append($container);
+      }
+    });
+  });
+  $("#cat4").on("click", ".btn-info", function(e) {
+    let newId = this.id
+    $.ajax({
+      method: "POST",
+      url: '/api/users/items/delete',
+      data: {id: newId}
+    }).done(e => {
+      return e;
+      console.log(e)
+    })
+    });
+  });
+
+
