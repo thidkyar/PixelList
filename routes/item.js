@@ -64,8 +64,7 @@ module.exports = knex => {
       .where({name: newId})
       .del()
       .then(() => {
-        res.redirect('/');
-        // res.send({ result: true });   
+        res.send({ result: true });   
       });
   });
   return router;
