@@ -60,8 +60,12 @@ app.use("/api/profile", profileRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+  let templateVars = {
+    userId: req.session.user_name
+  }
+  console.log(templateVars)
   if (req.session.user_id) {
-    return res.render("index")
+    return res.render("index", templateVars)
   }
     return res.send("Nice try, lets login first yah heard?") 
 });
@@ -86,8 +90,9 @@ app.get("/profile", (req, res) => {
 //logout button (delete cookies)
 app.post("/logout", (req, res) => {
   req.session = null;
-  res.redirect("/welcome");
+  res.redirect("/");
 });
+
 
 // Welcome page
 app.get("/welcome", (req, res) => {
