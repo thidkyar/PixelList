@@ -13,19 +13,21 @@ $(() => {
         .prependTo(categoryDivId);
       $("<button>")
         .attr("id", id)
-        .css("margin-left", "10px")
+        .css("margin-left", "174px")
         .addClass("btn btn-primary")
         .attr("value", "see more")
         .attr("data-toggle", "modal")
         .attr("data-target", "#myModalCenter")
         .appendTo($itemArticle);
-      $("<button>")
+      const $deleteButton = $("<button>")
         .attr("id", id)
-        .css("margin-left", "10px")
-        .addClass("btn btn-info")
+        .addClass("btn")
         .attr("data-target", "#moveToggle")
         .attr("value", "move")
         .appendTo($itemArticle);
+        $("<i>")
+      .addClass("fas fa-trash-alt")
+      .appendTo($deleteButton)
       // let $newForm = $("<form>")
       // .attr("method", "POST")
       // .attr("action", "/api/users/items/delete")
@@ -141,7 +143,7 @@ $(document).ready(function() {
       success: data => {
         const $container = $("<div>").addClass("api_container");
         data.items.forEach(el => {
-          let sourceImage = el.volumeInfo.imageLinks.smallThumbnail;
+          let sourceImage = el.volumeInfo.imageLinks.thumbnail;
           let sourceTitle = el.volumeInfo.title;
           let sourceAuthor = el.volumeInfo.authors;
           let sourceRating = el.volumeInfo.averageRating;
@@ -149,17 +151,17 @@ $(document).ready(function() {
           $("<img>")
             .attr("src", sourceImage)
             .appendTo($container);
-          $("<p>")
-            .text(sourceTitle)
+          $("<h4>")
+            .text(`Title: ${sourceTitle}`)
             .appendTo($container);
           $("<p>")
-            .text(sourceAuthor)
+            .text(`Author: ${sourceAuthor}`)
             .appendTo($container);
           $("<p>")
-            .text(sourceRating)
+            .text(`Rating: ${sourceRating}/10`)
             .appendTo($container);
           $("<p>")
-            .text(sourceCountry)
+            .text(`Country: ${sourceCountry}`)
             .appendTo($container);
         });
         $(".modal-body").append($container);
@@ -195,7 +197,7 @@ $(document).ready(function() {
       }
     });
   });
-  $("#cat4").on("click", ".btn-info", function(e) {
+  $("#cat4").on("click", ".btn", function(e) {
     let newId = this.id;
     $.ajax({
       method: "POST",
@@ -205,7 +207,7 @@ $(document).ready(function() {
       console.log(e);
     });
   });
-  $("#cat3").on("click", ".btn-info", function(e) {
+  $("#cat3").on("click", ".btn", function(e) {
     let newId = this.id;
     $.ajax({
       method: "POST",
@@ -215,7 +217,7 @@ $(document).ready(function() {
       console.log(e);
     });
   });
-  $("#cat2").on("click", ".btn-info", function(e) {
+  $("#cat2").on("click", ".btn", function(e) {
     let newId = this.id;
     $.ajax({
       method: "POST",
@@ -225,7 +227,7 @@ $(document).ready(function() {
       console.log(e);
     });
   });
-  $("#cat1").on("click", ".btn-info", function(e) {
+  $("#cat1").on("click", ".btn", function(e) {
     let newId = this.id;
     $.ajax({
       method: "POST",
@@ -234,7 +236,7 @@ $(document).ready(function() {
     }).done(e => {
     });
   });
-  $("#cat5").on("click", ".btn-info", function(e) {
+  $("#cat5").on("click", ".btn", function(e) {
     let newId = this.id;
     $.ajax({
       method: "POST",

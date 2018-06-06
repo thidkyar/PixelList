@@ -6,11 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- External ajax -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+
   
   <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-    crossorigin="anonymous">
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous"> -->
+  <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
 </head>
 
 <body>
@@ -22,19 +26,17 @@
     <div class="col-md-auto">
       <form class="newTask" id="newTask" align="center" method="POST" action="/api/users/items">
         <div class="col-md-6 mb-3">
-        <label hidden for="newItem">New Item</label>
-        <input class="form-control input-lg" placeholder="Enter a new task" id="inputdefault" type="text" required />
-</div>
-        <!-- <input type="text" required name="newItem" placeholder="I need to..."> -->
+          <label hidden for="newItem">New Item</label>
+          <input class="form-control input-lg" placeholder="Enter a new task" name ='newItem' id="inputdefault" type="text"  />
+        </div>
         <!-- <label for="dueDate">Due Date</label> -->
         <div class="col-md-6 mb-3">
-
-        <input type="date" placeholder="Enter a due date (optional)" class="form-control input-lg" id="inputdefault" type="text" required />
-
-        <!-- <input type="date" class="col-md-6 mb-3" required min='2018-06-04' id="dueDate" height="3em" name="dueDate"> -->
+        <!-- <input type="date" class="form-control input-lg" id="inputdefault"  /> -->
+        <input type="date" class="col-md-6 mb-3" id="dueDate" height="4em" name="dueDate">
         </div>
         <br><br>
-        <button type="button" class="btn btn-primary btn-block">Add Task</button>
+                 <input type="submit" id="tbutton" class="btn btn-primary btn-block" value="Add Item">
+        <!-- <button type="submit" class="btn btn-primary btn-block">Add Task</button> -->
       </form>
       <br>
     </div>
@@ -54,7 +56,7 @@
               </h4>
             </div>
             <div id="collapse1" class="panel-collapse collapse">
-              <div class="panel-body" class="category1" id="cat1">
+              <div class="panel-body" id="cat1">
               </div>
             </div>
           </div>
@@ -68,7 +70,7 @@
                 </h4>
               </div>
               <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body" class="category2" id="cat2">
+                <div class="panel-body" id="cat2">
                 </div>
               </div>
             </div>
@@ -84,7 +86,7 @@
                   </h4>
                 </div>
                 <div id="collapse3" class="panel-collapse collapse">
-                  <div class="panel-body" class="category3" id="cat3">
+                  <div class="panel-body" id="cat3">
                   </div>
                 </div>
               </div>
@@ -134,12 +136,12 @@
     <div class="container" id="avatar">
       <h3>User Profile</h3>
         <hr>
-      <h4>UserName</h4>
-      <div class="card" style="width:100%">
-        <img class="card-img-top" src="./images/walking.gif" alt="userAvatar" style="width:55%">
+      <!-- <h4 align="center">UserName</h4> -->
+      <div class="card" style="width:90%">
+        <img class="card-img-top" src="./images/walking.gif" alt="userAvatar" align="center" style="width:60%">
         <div class="card-body">
-          <h5 class="card-title"> Level 1: Accomplish more tasks to level up</h5>
-          <p class="card-text" align="center">health bar goes here</p>
+          <h6 class="card-title"> Level 1: Finish more tasks to level up</h6>
+          <div class="card-text"><img src="/images/health.png" width=8em alt="healthbar"/></div>
           <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
         </div>
       </div>
@@ -149,22 +151,23 @@
       crossorigin="anonymous"></script>
     <!-- Modal -->
     <div class="modal fade" id="myModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="myModalLongTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="myModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 </body>
 
 </html>
