@@ -1,17 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <title>Pixel List: The Smart To-Do List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- External ajax -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+  
+  <!-- Optional theme -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous"> -->
+  <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
+</head>
+
+<body>
+  <header>
+    <% include ./partials/_header %>
+  </header>
+  <div class="container">
+    <!--ADD TASK TASK-->
+    <div class="col-md-auto">
+      <form class="newTask" id="newTask" align="center" method="POST" action="/api/users/items">
+        <div class="col-md-6 mb-3">
+          <label hidden for="newItem">New Item</label>
+          <input class="form-control input-lg" placeholder="Enter a new task" name ='newItem' id="inputdefault" type="text"  />
+        </div>
+        <!-- <label for="dueDate">Due Date</label> -->
+        <div class="col-md-6 mb-3">
+        <!-- <input type="date" class="form-control input-lg" id="inputdefault"  /> -->
+        <input type="date" class="col-md-6 mb-3" id="dueDate" height="4em" name="dueDate">
+        </div>
+        <br><br>
+                 <input type="submit" id="tbutton" class="btn btn-primary btn-block" value="Add Item">
+        <!-- <button type="submit" class="btn btn-primary btn-block">Add Task</button> -->
+      </form>
+      <br>
+    </div>
+    <!--END OF ADD TASK-->
+    <div class "main">
+      <div class="all-categories">
+        <!--Categories-->
+        <div class="col-sm-8">
+        <div class="row">
+        <div class="col-xs-6">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                  Books
+                </a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+              <div class="panel-body" id="cat1">
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="col-xs-6">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Entertainment</a>
+                </h4>
+              </div>
+              <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body" id="cat2">
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Places</a>
+                  </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                  <div class="panel-body" id="cat3">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="panel panel-danger">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Products</a>
+                  </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                  <div class="panel-body" id="cat4">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row"> -->
+            <div class="col-xs-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Other</a>
+                  </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse">
+                  <div class="panel-body" id="cat5">
+                    </a>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            <!-- </div> -->
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  <!-- </div> -->
+  <!-- </div> -->
+<!-- </div> -->
+<div class="row">
+  <!--USER PROFILE - CARD VIEW-->
+  <!-- <div class="col-sm-6"> -->
+
+  <div class="col-sm-4">
+    <div class="container" id="avatar">
+      <h3>User Profile</h3>
+        <hr>
+      <!-- <h4 align="center">UserName</h4> -->
+      <div class="card" style="width:90%">
+        <img class="card-img-top" src="./images/walking.gif" alt="userAvatar" align="center" style="width:60%">
+        <div class="card-body">
+          <h6 class="card-title"> Level 1: Finish more tasks to level up</h6>
+          <div class="card-text"><img src="/images/health.png" width=8em alt="healthbar"/></div>
+          <!-- <a href="#" class="btn btn-primary">See Profile</a> -->
+        </div>
+      </div>
+    </div>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+    <!-- Modal -->
+    <div class="modal fade" id="myModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="myModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+
 </html>

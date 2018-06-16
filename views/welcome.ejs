@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+    <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+  crossorigin="anonymous">
+    
+</head>
+
+<body>
+  <header>
+    <% include ./partials/_login %>
+  </header>
+  <div class "main">
+    <div class="row">
+      <div class="col-sm-8"> <img src="/images/stand.gif" class="home"></div>
+      <div class="col-sm-4">
+        <form class="register" method="POST" action="/api/register">
+          <h2> Register</h2>
+          <hr>
+          <label for="username" hidden>
+              <b>Username</b>
+            </label>
+            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="username" required placeholder="Username" />
+  <br>
+  
+          <label for="fName" hidden>
+            <b>First Name</b>
+          </label>
+          <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="fName" required placeholder="First Name" />
+<br>
+          <label for="lName" hidden>
+            <b>Last Name</b>
+          </label>
+          <input type="text" name="lName" class="form-control mb-2 mr-sm-2 mb-sm-0" required placeholder="Last Name" />
+          <br>
+          <input type="password" class="form-control mb-2 mr-sm-2 mb-sm-0" name="password" required placeholder="Password" />
+          <br>
+          <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+      </div>
+    </div>
+    <br>
+  </div>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+</body>
+</html>
